@@ -10,7 +10,7 @@ In a normal supermarket, things are identified using Stock Keeping Units, or SKU
 
 Our checkout accepts items in any order, so that if we scan a B, an A, and another B, we’ll recognize the two B’s and price them at 45 (for a total price so far of 95). Because the pricing changes frequently, we need to be able to pass in a set of pricing rules each time we start handling a checkout transaction.
 
-here's a suggested interface for the checkout...
+Here's a suggested interface for the checkout...
 ```cs
 interface ICheckout
 {
