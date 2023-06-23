@@ -11,9 +11,21 @@ namespace Kata.Checkout.Tests
         [SetUp]
         public void Setup()
         {
+            List<Product> products = new List<Product>()
+            {
+                new Product('A', 50), new Product('B', 30), new Product('C', 20), new Product('D', 15)
+            };
 
+            List<Discount> specialOffers = new List<Discount>
+            {
+                new Discount(sku:'A',quantity:3,value:150),
+                new Discount(sku:'B',quantity:2,value:45)
+            };
 
-            checkout = new Checkout();
+            OfferService offerService = new OfferService(specialOffers);
+            PricingService pricingService = new PricingService(products);
+
+            checkout = new Checkout(pricingService, offerService);
         }
 
         [Test]
