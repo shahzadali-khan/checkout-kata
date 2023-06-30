@@ -83,8 +83,40 @@ namespace Kata.Checkout.Tests
 
             // Assert
             Assert.AreEqual(6, checkout.GetCartItemCount());
-            Assert.AreEqual(215, totalPrice);
+            Assert.AreEqual(230, totalPrice);
         }
+
+        [Test]
+        public void GetTotalPriec_FiveItemsAdded_CalculateCarryingBagCharges()
+        {
+            // Arrange
+            checkout.Scan('A');
+            checkout.Scan('B');
+            checkout.Scan('C');
+            checkout.Scan('D');
+            checkout.Scan('D');
+
+            int totalPrice = checkout.GetTotalPrice();
+
+            Assert.AreEqual(135, totalPrice);
+        }
+
+        [Test]
+        public void GetTotalPriec_SixItemsAdded_CalculateCarryingBagCharges()
+        {
+            // Arrange
+            checkout.Scan('A');
+            checkout.Scan('B');
+            checkout.Scan('C');
+            checkout.Scan('D');
+            checkout.Scan('D');
+            checkout.Scan('D');
+
+            int totalPrice = checkout.GetTotalPrice();
+
+            Assert.AreEqual(155, totalPrice);
+        }
+
     }
 
 }

@@ -23,6 +23,17 @@ namespace Kata.Checkout
         public int GetTotalPrice()
         {
             int totalPrice = 0;
+            int carryingBagCount = 0;
+            int carryingBagPrice = 5;
+
+            if (GetCartItemCount() > 0)
+            {
+
+                carryingBagCount = (GetCartItemCount() - 1) / 5 + 1;
+
+                totalPrice += carryingBagPrice * carryingBagCount;
+            }
+
 
             var itemGroups = cart
            .GroupBy(s => s)
@@ -52,7 +63,7 @@ namespace Kata.Checkout
         {
             if (cart is not null)
             {
-                return cart.Where(x => x == item).Count();
+                return cart.Count(x => x == item);
             }
 
             return 0;
