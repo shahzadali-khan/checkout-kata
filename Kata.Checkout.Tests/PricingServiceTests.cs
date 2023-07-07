@@ -1,16 +1,14 @@
-﻿using NUnit.Framework;
+﻿using Xunit;
 using System.Collections.Generic;
 
 namespace Kata.Checkout.Tests
 {
 
-    [TestFixture]
     public class PricingServiceTests
     {
         private PricingService pricingService;
 
-        [SetUp]
-        public void Setup()
+        public PricingServiceTests()
         {
             List<Product> products = new List<Product>()
             {
@@ -20,7 +18,7 @@ namespace Kata.Checkout.Tests
             pricingService = new PricingService(products);
         }
 
-        [Test]
+        [Fact]
         public void GetPrice_ValidItem_ReturnsCorrectPrice()
         {
             // Arrange
@@ -32,10 +30,10 @@ namespace Kata.Checkout.Tests
             int priceD = pricingService.GetPrice('D');
 
             // Assert
-            Assert.AreEqual(50, priceA);
-            Assert.AreEqual(30, priceB);
-            Assert.AreEqual(20, priceC);
-            Assert.AreEqual(15, priceD);
+            Assert.Equal(50, priceA);
+            Assert.Equal(30, priceB);
+            Assert.Equal(20, priceC);
+            Assert.Equal(15, priceD);
         }
     }
 

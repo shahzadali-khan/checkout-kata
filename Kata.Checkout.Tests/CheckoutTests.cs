@@ -18,7 +18,7 @@ namespace Kata.Checkout.Tests
 
             List<Discount> specialOffers = new List<Discount>
             {
-                new Discount(sku:'A',quantity:3,value:150),
+                new Discount(sku:'A',quantity:3,value:130),
                 new Discount(sku:'B',quantity:2,value:45)
             };
 
@@ -65,7 +65,7 @@ namespace Kata.Checkout.Tests
             int totalPrice = checkout.GetTotalPrice();
 
             // Assert
-            Assert.AreEqual(100, totalPrice);
+            Assert.AreEqual(105, totalPrice);
         }
 
         [Test]
@@ -83,7 +83,7 @@ namespace Kata.Checkout.Tests
 
             // Assert
             Assert.AreEqual(6, checkout.GetCartItemCount());
-            Assert.AreEqual(230, totalPrice);
+            Assert.AreEqual(205, totalPrice);
         }
 
         [Test]
